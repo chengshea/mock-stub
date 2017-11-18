@@ -1,0 +1,55 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>post</title>
+<script src="../js/jquery-3.1.0.min.js"></script>
+<script src="../js/ajaxfileupload.js"></script>
+
+<script type="text/javascript">
+$(document).ready(function(){
+	var  url=$("#sfile").attr("action");
+        var  method=$("#sfile").attr("method");
+    
+	$("button").click(function(){
+
+     $.ajaxFileUpload({
+			 url: url, //用于文件上传的服务器端请求地址
+			 secureuri: false, //是否需要安全协议，一般设置为false
+			 fileElementId: 'file', //文件上传域的ID
+			 dataType: 'json',
+             type:method,
+	         data:{
+	        	"uiId":$("#id").val(),
+	        	"uiId1":$("#id1").val(),
+	        	"uiId2":$("#id2").val(),
+	        	"pid":$("#p").val()
+	          },
+	         
+	          success:function(data) {
+	               console.log("success >>>"+data) 
+	              
+	          }
+	         
+	   });
+     
+	}
+	);
+
+	
+})
+ </script>
+</head>
+<body>
+<form id="up" action="http://127.0.0.1:3000/api/post.do" method="post"
+		  enctype="multipart/form-data" >
+ <input type="file" name="file" id="file" />
+ <input type="text" name="uiId" id="id"  value="123" />
+ <input type="text" name="uiId1" id="id1"  value="1" />
+ <input type="text" name="uiId2" id="id2"  value="2"/>
+ <input type="text" name="pid" id="p" value="3" />
+<button>post请求json</button>
+</form>
+
+</body>
+</html>
