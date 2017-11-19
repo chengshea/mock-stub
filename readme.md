@@ -7,7 +7,6 @@
 ```
 >例如： public/get.html <br/>
 请求地址 http://127.0.0.1:3000/api/get.do?methodName=test  <br/>
-<br/>
 读取json目录下对应的参数文件（methodName=test.json）的测试数据
 
 
